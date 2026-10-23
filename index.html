@@ -138,11 +138,7 @@
                     Ngôn ngữ / Language:
                 </span>
                 
-                <button onclick="setLang('vi')" id="btnLang_vi" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all border border-goldmute bg-goldmute text-black shadow-sm flex items-center gap-1.5">
-                    <span>🇻🇳</span> <span class="font-sans">Tiếng Việt</span>
-                </button>
-
-                <button onclick="setLang('lo')" id="btnLang_lo" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all border border-darkslate-border bg-darkslate-card text-textmuted-sub hover:text-white flex items-center gap-1.5">
+                <button onclick="setLang('lo')" id="btnLang_lo" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all border border-goldmute bg-goldmute text-black shadow-sm flex items-center gap-1.5">
                     <span>🇱🇦</span> <span class="font-lao">ພາສາລາວ</span>
                 </button>
 
@@ -152,6 +148,10 @@
 
                 <button onclick="setLang('zh')" id="btnLang_zh" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all border border-darkslate-border bg-darkslate-card text-textmuted-sub hover:text-white flex items-center gap-1.5">
                     <span>🇨🇳</span> <span class="font-chinese">中文</span>
+                </button>
+
+                <button onclick="setLang('vi')" id="btnLang_vi" class="px-2.5 py-1 rounded-lg text-xs font-bold transition-all border border-darkslate-border bg-darkslate-card text-textmuted-sub hover:text-white flex items-center gap-1.5">
+                    <span>🇻🇳</span> <span class="font-sans">Tiếng Việt</span>
                 </button>
             </div>
 
@@ -1493,7 +1493,7 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-            setLang('vi');
+            setLang('lo');
         });
     </script>
 </body>
