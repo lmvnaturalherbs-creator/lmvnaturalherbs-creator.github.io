@@ -1513,7 +1513,47 @@
             const sender = document.getElementById('rfq_sender').value;
             const phone = document.getElementById('rfq_phone').value;
             const details = document.getElementById('rfq_details').value;
-            const text = encodeURIComponent(`*YÊU CẦU BÁO GIÁ SỈ LMV (CEO AHAWNG - ARCHAN)*\n- Sản phẩm: ${item}\n- Khách hàng: ${sender}\n- Điện thoại/Zalo: ${phone}\n- Nhu cầu: ${details}\n- Địa chỉ xưởng: LAK 19 DONG OUN, XAYTHANI, VIENTIANE`);
+
+            // 1. Send Instant Lead to Boss Telegram via @LMV_ACHAN_BOT
+            const teleMsg = `🚨 <b>YÊU CẦU BÁO GIÁ SỈ B2B TỪ WEBSITE MLVHERBS.ORG!</b>
+` +
+                `━━━━━━━━━━━━━━━━━━━━
+` +
+                `👤 <b>Đối tác / Khách hàng:</b> ${sender || 'Chưa để lại tên'}
+` +
+                `📞 <b>Điện thoại / Zalo / WhatsApp:</b> <code>${phone || 'Chưa cung cấp'}</code>
+` +
+                `🌿 <b>Dược liệu quan tâm:</b> ${item}
+` +
+                `📦 <b>Khối lượng & Nhu cầu:</b> ${details || 'Chưa cung cấp'}
+` +
+                `⏰ <b>Thời gian gửi:</b> ${new Date().toLocaleString('vi-VN', {timeZone: 'Asia/Vientiane'})}
+` +
+                `━━━━━━━━━━━━━━━━━━━━
+` +
+                `👉 <i>Bấm số điện thoại trên để gọi / Zalo tư vấn chốt đơn ngay!</i>`;
+
+            fetch('https://api.telegram.org/bot8734753867:AAGQfrJK6436mRikVyMBMHZTYgmASNPxlHo/sendMessage', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    chat_id: 7684267883,
+                    text: teleMsg,
+                    parse_mode: 'HTML'
+                })
+            }).catch(err => console.log('Telegram send error:', err));
+
+            // 2. Open WhatsApp for direct chat as secondary channel
+            const text = encodeURIComponent(`*YÊU CẦU BÁO GIÁ SỈ LMV (CEO AHAWNG - ARCHAN)*
+- Dược liệu: ${item}
+- Đối tác: ${sender}
+- Hotline/Zalo: ${phone}
+- Nhu cầu: ${details}
+- Xưởng LMV: LAK 19 DONG OUN, XAYTHANI, VIENTIANE`);
+            
+            alert("CẢM ƠN QUÝ KHÁCH / ຂອບໃຈລູກຄ້າ / THANK YOU!
+
+Thư ký LMV đã ghi nhận và chuyển yêu cầu báo giá trực tiếp tới Sếp Tổng AHAWNG. Hệ thống sẽ mở tiếp WhatsApp (+856 20 5878 3435) để quý khách trao đổi tức thì!");
             window.open(`https://wa.me/8562058783435?text=${text}`, '_blank');
         }
 
